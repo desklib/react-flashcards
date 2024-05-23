@@ -28,6 +28,46 @@ Each flashcard can contain the following elements:
 
 ## Usage Examples
 
+
+```jsx
+import React from 'react';
+import FlashCardArray from 'react-flashcards';
+
+const MyFlashcardComponent = () => {
+    const flashcards = [
+        {
+            id: 1,
+            showTimer: true,
+            timerDuration: 10,
+            frontHtml: '<h1>Front of Card 1</h1>',
+            backHtml: '<p>Back of Card 1</p>',
+            // Other properties...
+        },
+        {
+            id: 2,
+            showTimer: false,
+            frontHtml: '<h1>Front of Card 2</h1>',
+            backHtml: '<p>Back of Card 2</p>',
+            // Other properties...
+        },
+        // Add more flashcards as needed
+    ];
+
+    return (
+        <FlashCardArray
+            cards={flashcards}
+            controls={true}
+            showCount={true}
+            onCardChange={(id, index) => console.log(`Active card changed: ID ${id}, Index ${index}`)}
+            onCardFlip={(id, index, state) => console.log(`Card flipped: ID ${id}, Index ${index}, Flipped ${state}`)}
+            // Other props...
+        />
+    );
+};
+
+export default MyFlashcardComponent;
+
+
 (TBD)
 
 ## API Documentation
