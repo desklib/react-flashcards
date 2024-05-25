@@ -132,8 +132,14 @@ function App() {
 
 ```
 ### Custom Styles for front and back content
+
 ```javascript
-   <FlashCard
+import React from 'react';
+import { FlashCard } from 'react-quizlet-flashcard';
+
+function App() {
+  return (
+ <FlashCard
           frontHtml={
             <>
           <h1>A cold-blooded vertebrate animal that is born in water and breathes with gills is called :</h1>
@@ -160,6 +166,10 @@ function App() {
           rightLabelValue="A_N"
     
         />
+  );
+}
+
+
     ```
 
 ### Card Flip Callback
@@ -169,7 +179,7 @@ import { FlashCard } from 'react-quizlet-flashcard';
 
 function App() {
   return (
-    <FlashCard
+   <FlashCard
         frontHtml={<h1>Logged in Console</h1>}
         backHtml={<h1>Back</h1>}
         onCardFlip={(state) => {
@@ -179,6 +189,11 @@ function App() {
       />
   );
 }
+
+
+    ```
+
+
         
 ## API Documentation
 
