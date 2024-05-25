@@ -39,21 +39,21 @@ npm i react-flashcards
 import React from 'react';
 import FlashCardArray from 'react-flashcards';
 
-const MyFlashcardComponent = () => {
+const MyFlashcardComponent  = () => {
     const flashcards = [
         {
             id: 1,
             showTimer: true,
             timerDuration: 10,
-            frontHtml: '<h1>Front of Card 1</h1>',
-            backHtml: '<p>Back of Card 1</p>',
+            frontHtml: '<h1>Front of Card One</h1>',
+            backHtml: '<p>Back of Card Two</p>',
             // Other properties...
         },
         {
             id: 2,
             showTimer: false,
-            frontHtml: '<h1>Front of Card 2</h1>',
-            backHtml: '<p>Back of Card 2</p>',
+            frontHtml: '<h1>Front of Card One</h1>',
+            backHtml: '<p>Back of Card Two</p>',
             // Other properties...
         },
         // Add more flashcards as needed
