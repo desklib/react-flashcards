@@ -106,9 +106,80 @@ export default MyFlashcardComponent;
 | textToSpeechIcon    | React.ReactNode       | Custom text-to-speech icon         |
 
 
+## Examples
 
+### Standalone Flashcard component
 
+<details>
+<summary>Click to expand</summary>
 
+#### Basic Flashcard
+
+```javascript
+import React from 'react';
+import { FlashCard } from 'react-quizlet-flashcard';
+
+function App() {
+  return (
+    <div className="storyContainer">
+      <FlashCard 
+        frontHtml={<div>Who is Prime Minister of <u>India?</u>?</div>} 
+        backHtml={<div>Narendar Modi</div>} 
+      />
+    </div>
+  );
+}
+
+```
+### Custom Styles for front and back content
+```javascript
+   <FlashCard
+          frontHtml={
+            <>
+          <h1>A cold-blooded vertebrate animal that is born in water and breathes with gills is called :</h1>
+            </>
+          }
+          backHtml={<h1>Amphibian</h1>}
+          backContentStyle={{
+            backgroundColor: "tea;",
+            color: "purple",
+            padding: "10px",
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+          }}
+          frontContentStyle={{
+            backgroundColor: "purple",
+            color: "white",
+            display: "grid",
+            fontSize: "2rem",
+          }}
+          leftLabel="Subject"
+          leftLabelValue="Eng"
+          rightLabel="Hint"
+          rightLabelValue="A_N"
+    
+        />
+    ```
+
+### Card Flip Callback
+```javascript
+import React from 'react';
+import { FlashCard } from 'react-quizlet-flashcard';
+
+function App() {
+  return (
+    <FlashCard
+        frontHtml={<h1>Logged in Console</h1>}
+        backHtml={<h1>Back</h1>}
+        onCardFlip={(state) => {
+          if (state) console.log('Card is flipped');
+          else console.log('Card is not flipped');
+        }}
+      />
+  );
+}
+        
 ## API Documentation
 
 (TBD)
