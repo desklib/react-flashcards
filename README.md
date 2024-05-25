@@ -1,11 +1,10 @@
-# react-flashcards
+# Welcome to React-Flashcards
 
 `react-flashcards` is a comprehensive, customizable flashcard component for React applications, designed to enhance learning experiences with rich multimedia support and interactive features.
 
 ## Features
 
 - **Image Support:** Integrate images directly into your flashcards.
-- **Video Support:** Embed videos to provide visual explanations or demonstrations.
 - **Hint System:** Offer hints to help users when they're stuck.
 - **Bookmark/Favorite:** Allows users to save and revisit key flashcards.
 - **Sound:** Incorporate audio clips for language learning or auditory feedback.
@@ -19,10 +18,17 @@ Each flashcard can contain the following elements:
 - **Answer/Explanation:** The solution or explanation for the prompt.
 - **Hint:** Optional clues or assistance for solving the prompt.
 - **Image:** Visual media related to the prompt.
-- **Video:** Video media to enhance understanding.
 - **Category:** Classification of the flashcard to organize by subject or difficulty.
 
 ## Installation
+
+```sh
+yarn add react-flashcards
+```
+
+```sh
+npm i react-flashcards
+```
 
 (TBD)
 
@@ -66,9 +72,42 @@ const MyFlashcardComponent = () => {
 };
 
 export default MyFlashcardComponent;
-```
+``` 
 
-(TBD)
+## Possible keys for each object in `cards` array
+
+| Key                 | Type                  | Description                        |
+| ------------------- | --------------------- | ---------------------------------- |
+| \*id                | number                | Unique identifier for the flashcard |
+| \*frontHtml         | string \| JSX.Element | HTML or JSX for the front of the card |
+| \*backHtml          | string \| JSX.Element | HTML or JSX for the back of the card |
+| frontStyle          | React.CSSProperties   | Custom styles for the front of the card |
+| frontContentStyle   | React.CSSProperties   | Custom styles for the content on the front of the card |
+| backStyle           | React.CSSProperties   | Custom styles for the back of the card |
+| backContentStyle    | React.CSSProperties   | Custom styles for the content on the back of the card |
+| timerStyles         | React.CSSProperties   | Custom styles for the timer        |
+| className           | string                | Custom class name for the card     |
+| height              | string                | Height of the card                 |
+| width               | string                | Width of the card                  |
+| borderRadius        | string                | Border radius of the card          |
+| style               | React.CSSProperties   | Additional custom styles for the card |
+| leftLabel           | string                | Left label text                    |
+| leftLabelValue      | string                | Value for left label               |
+| rightLabel          | string                | Right label text                   |
+| rightLabelValue     | string                | Value for right label              |
+| showBookMark        | boolean               | Show bookmark icon on the card     |
+| showLeftLabel       | boolean               | Show left label on the card        |
+| showRightLabel      | boolean               | Show right label on the card       |
+| showTextToSpeech    | boolean               | Show text-to-speech icon on the card |
+| showTimer           | boolean               | Show timer on the card             |
+| timerDuration       | number                | Duration for the timer             |
+| bookmarkIcon        | React.ReactNode       | Custom bookmark icon               |
+| rightLabelIcon      | React.ReactNode       | Custom right label icon            |
+| textToSpeechIcon    | React.ReactNode       | Custom text-to-speech icon         |
+
+
+
+
 
 ## API Documentation
 
