@@ -199,7 +199,7 @@ function App() {
     return <FlashCard frontHtml={<h1>Front</h1>} backHtml={<h1>Back</h1>} style={{ width: '500px', height: '350px' }} />;
 }
 ```
-## Possible Props for FlashCard Component
+## Possible Prop for FlashCard Component
 
 | Key               | Type                  | Description                                            |
 | ----------------- | --------------------- | ------------------------------------------------------ |
