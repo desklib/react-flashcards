@@ -64,8 +64,9 @@ const MyFlashcardComponent = () => {
             cards={flashcards}
             controls={true}
             showCount={true}
-            onCardChange={(id, index) => console.log(`Active card changed: ID ${id}, Index ${index}`)}
-            onCardFlip={(id, index, state) => console.log(`Card flipped: ID ${id}, Index ${index}, Flipped ${state}`)}
+          onCardChange={(id, index) => console.log(`Card change detected: ID ${id}, Index: ${index}`)}
+onCardFlip={(id, index, state) => console.log(`Card flipped: ID ${id}, Index: ${index}, Flipped: ${state}`)}
+
             // Other props...
         />
     );
@@ -120,16 +121,14 @@ import { FlashCard } from 'react-flashcards';
 
 function App() {
     return (
-        <div className="storyContainer">
-            <FlashCard
-                frontHtml={
-                    <div>
-                        Who is Prime Minister of <u>India?</u>?
-                    </div>
-                }
-                backHtml={<div>Narendar Modi</div>}
-            />
-        </div>
+        <FlashCard
+            frontHtml={
+                <div>
+                    Who is Prime Minister of <u>India?</u>?
+                </div>
+            }
+            backHtml={<div>Narendar Modi</div>}
+        />
     );
 }
 ```
@@ -192,10 +191,119 @@ function App() {
 }
 ```
 
+### Custom Card Size
+
+```javascript
+import { FlashCard } from 'react-flashcards';
+
+function App() {
+    return <FlashCard frontHtml={<h1>Front</h1>} backHtml={<h1>Back</h1>} style={{ width: '500px', height: '350px' }} />;
+}
+```
+
 </details>
-        
+      <details>
+<summary>FlashCardArray component</summary>  
 ## API Documentation
 
+### Basic FlashcardArray:
+
+```javascript
+import { FlashCardArray } from 'react-flashcards';
+
+function App() {
+    const cards = [
+        {
+            id: 1,
+            frontHtml: 'Front Content 1',
+            backHtml: 'Back Content 1'
+        },
+        {
+            id: 2,
+            frontHtml: 'Front Content 2',
+            backHtml: 'Back Content 2'
+        }
+    ];
+    return <FlashCardArray cards={cards} />;
+}
+```
+
+### Custom styles for all cards in the array:
+
+```javascript
+import { FlashCardArray } from 'react-flashcards';
+
+function App() {
+    const cards = [
+        {
+            id: 1,
+            frontHtml: 'Front Content 1',
+            backHtml: 'Back Content 1'
+        },
+        {
+            id: 2,
+            frontHtml: 'Front Content 2',
+            backHtml: 'Back Content 2'
+        }
+    ];
+    return (
+        <FlashCardArray
+            cards={cards}
+            width="500px"
+            frontContentStyle={{
+                backgroundColor: 'blue',
+                color: 'black'
+            }}
+            backContentStyle={{
+                backgroundColor: 'teal'
+            }}
+        />
+    );
+}
+```
+
+### Custom style for each card:
+
+You can set the style for each card directly within the card object by referring to the card's prop list. Alternatively, you can pass a custom React component with its own styles into the cards array.
+
+```javascript
+import { FlashCardArray } from 'react-flashcards';
+
+function App() {
+    const cards = [
+        {
+            id: 1,
+            frontHtml: 'Front Content 1',
+            backHtml: 'Back Content 1',
+            showTimer: false,
+            leftLabel: 'Label Left',
+            leftLabelValue: 'Left Value',
+            showLeftLabel: true,
+            rightLabel: 'Label Right',
+            rightLabelValue: 'Right Value',
+            showRightLabel: true,
+            showBookMark: true,
+            showTextToSpeech: true,
+            frontContentStyle: {
+                backgroundColor: 'red'
+            }
+        },
+        {
+            id: 2,
+            frontHtml: 'Front Content 2',
+            backHtml: 'Back Content 2',
+            showTimer: true, // Example of showTimer being true
+            timerDuration: 10,
+            frontContentStyle: {
+                backgroundColor: 'blue'
+            }
+        }
+    ];
+    return <FlashCardArray cards={cards} />;
+}
+```
+
+</details>
 (TBD)
 
 ## Configuration Options
