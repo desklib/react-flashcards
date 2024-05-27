@@ -1,1 +1,2 @@
-console.log('hello vidhi from typescxript')
+export * from './components/FlashCard'
+export * from './components/FlashCardArray';

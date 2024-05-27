@@ -1,0 +1,107 @@
+
+.FlashcardArrayContainer * {
+  box-sizing: border-box;
+}
+
+.FlashcardArrayContainer {
+  gap: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  width: 560px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+@media (min-width: 625px) {
+  .FlashcardArrayContainer {
+    width: 90%;
+  }
+}
+
+.FlashcardArrayContainer__CardFrame {
+  perspective: 1000px;
+  width: 100%;
+  height: 340px;
+  display: flex;
+  flex-direction: row;
+}
+
+.FlashcardArrayContainer__CardFrame .FlashcardWrapper {
+  flex: 1 1 auto;
+}
+
+.FlashcardArrayContainer__CardFrame .FlashcardWrapper:nth-child(1),
+.FlashcardArrayContainer__CardFrame .FlashcardWrapper:nth-child(3) {
+  opacity: 0;
+  box-shadow: none;
+  pointer-events: none;
+  visibility: hidden;
+  background: transparent;
+  display: block !important;
+  transform-style: preserve-3d;
+  transition: transform 0.24s ease, opacity 0.12s linear !important;
+}
+
+.FlashcardArrayContainer__CardFrame .FlashcardWrapper:nth-child(1) {
+  z-index: 5;
+  right: unset;
+  width: 0px !important;
+  transform: translateX(-16%) rotateY(16deg) translateZ(0) !important;
+}
+
+.FlashcardArrayContainer__CardFrame .FlashcardWrapper:nth-child(1) .FlashcardWrapper__item--content {
+  display: none;
+}
+
+.FlashcardArrayContainer__CardFrame .FlashcardWrapper:nth-child(3) {
+  z-index: 5;
+  width: 0px !important;
+  left: unset;
+  transform: translateX(16%) rotateY(-16deg) translateZ(0) !important;
+}
+
+.FlashcardArrayContainer__CardFrame .FlashcardWrapper:nth-child(3) .FlashcardWrapper__item--content {
+  display: none;
+}
+
+.FlashcardArrayContainer__CardFrame .FlashcardWrapper:nth-child(2) {
+  z-index: 6;
+  box-shadow: none;
+  background: transparent;
+  display: block !important;
+  transform-style: preserve-3d;
+  transition: transform 0.24s ease, opacity 0.12s linear !important;
+}
+
+.FlashcardArrayContainerControl {
+
+  width: 100%;
+  height: 40px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.FlashcardArrayContainerControl button {
+  padding: 0;
+  border: none;
+  font-size: 40px;
+  width: auto;
+  height: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: transparent;
+  transition: all 0.12s cubic-bezier(0.47, 0, 0.745, 0.715);
+}
+
+.FlashcardArrayContainerControl button svg {
+  height: 80%;
+  cursor: pointer;
+}
+
+.FlashcardArrayContainerControl_Counts {
+  font-size: 15px !important;
+}

@@ -1,42 +1,29 @@
 {
-    "name": "react-flashcard",
-    "version": "1.0.0",
-    "description": "A simple Flashcard component using HTML, CSS, and TypeScript.",
-    "main": "dist/index.js",
-    "type": "module",
-    "types": "build/index.d.ts",
+    "name": "react-flashcards",
     "repository": {
         "type": "git",
-        "url": "git+https://github.com/your-username/flashcard-component.git"
+        "url": "https://github.com/desklib/react-flashcards/blob/main/package.json"
     },
-    "keywords": [
-        "flashcard",
-        "component",
-        "typescript",
-        "html",
-        "css"
+    "version": "0.0.1",
+    "description": "A simple Flashcard component using React and TypeScript.",
+    "main": "dist/cjs/index.js",
+    "module": "dist/esm/index.js",
+    "files": [
+        "dist",
+        "src/**/*.css"
     ],
-    "author": "Your Name",
-    "license": "MIT",
-    "bugs": {
-        "url": "https://github.com/your-username/flashcard-component/issues"
-    },
-    "homepage": "https://github.com/your-username/flashcard-component#readme",
     "scripts": {
-        "build": "webpack"
+        "build": "rm -rf dist/ && npm run build:esm && npm run build:cjs && npm run copy:css",
+        "copy:css": "mkdir -p dist/cjs/components/FlashCardArray && mkdir -p dist/esm/components/FlashCardArray && mkdir -p dist/cjs/components/FlashCard && mkdir -p dist/esm/components/FlashCard && cp src/components/FlashCardArray/FLashCardArray.css dist/cjs/components/FlashCardArray && cp src/components/FlashCardArray/FLashCardArray.css dist/esm/components/FlashCardArray && cp src/components/FlashCard/Flashcard.css dist/cjs/components/FlashCard && cp src/components/FlashCard/Flashcard.css dist/esm/components/FlashCard",
+        "build:esm": "tsc",
+        "build:cjs": "tsc --module CommonJS --outDir dist/cjs"
     },
+    "author": "Vidhi Tomar",
+    "license": "MIT",
     "devDependencies": {
-        "@babel/core": "^7.24.5",
-        "@babel/preset-env": "^7.24.5",
-        "babel-loader": "^9.1.3",
-        "ts-loader": "^9.5.1",
-        "typescript": "^5.4.5",
-        "webpack": "^5.91.0",
-        "webpack-cli": "^5.1.4"
-    },
-    "exports": {
-        "./webpack.config.js": {
-            "type": "commonjs"
-        }
+        "@types/node": "^20.12.12",
+        "@types/react": "^18.3.2",
+        "@types/react-dom": "^18.3.0",
+        "typescript": "^5.4.5"
     }
 }

@@ -31,7 +31,7 @@ yarn add react-flashcards
 npm i react-flashcards
 ```
 
-(TBD)
+
 
 ## Usage Examples
 
@@ -93,7 +93,6 @@ export default MyFlashcardComponent;
 | borderRadius      | string                | Border radius of the card                              |
 | style             | React.CSSProperties   | Additional custom styles for the card                  |
 | leftLabel         | string                | Left label text                                        |
-| leftLabelValue    | string                | Value for left label                                   |
 | rightLabel        | string                | Right label text                                       |
 | rightLabelValue   | string                | Value for right label                                  |
 | showBookMark      | boolean               | Show bookmark icon on the card                         |
@@ -163,7 +162,7 @@ function App() {
                 fontSize: '2rem'
             }}
             leftLabel="Subject"
-            leftLabelValue="Eng"
+   
             rightLabel="Hint"
             rightLabelValue="A_N"
         />
@@ -200,6 +199,37 @@ function App() {
     return <FlashCard frontHtml={<h1>Front</h1>} backHtml={<h1>Back</h1>} style={{ width: '500px', height: '350px' }} />;
 }
 ```
+## Possible Props for FlashCard Component
+
+| Key               | Type                  | Description                                            |
+| ----------------- | --------------------- | ------------------------------------------------------ |
+| \*id              | number                | Unique identifier for the flashcard                    |
+| \*frontHtml       | string \| JSX.Element | HTML or JSX for the front of the card                  |
+| \*backHtml        | string \| JSX.Element | HTML or JSX for the back of the card                   |
+| isMarkdown        | boolean                | If true, renders the frontHtml /backHtml as Markdown; defaults to false                |
+| frontStyle        | React.CSSProperties   | Custom styles for the front of the card                |
+| frontContentStyle | React.CSSProperties   | Custom styles for the content on the front of the card |
+| backStyle         | React.CSSProperties   | Custom styles for the back of the card                 |
+| backContentStyle  | React.CSSProperties   | Custom styles for the content on the back of the card  |
+| timerStyles       | React.CSSProperties   | Custom styles for the timer                            |
+| className         | string                | Custom class name for the card                         |
+| height            | string                | Height of the card                                     |
+| width             | string                | Width of the card                                      |
+| borderRadius      | string                | Border radius of the card                              |
+| style             | React.CSSProperties   | Additional custom styles for the card                  |
+| leftLabel         | string                | Left label text                                        |
+| rightLabel        | string                | Right label text                                       |
+| rightLabelValue   | string                | Value for right label                                  |
+| showBookMark      | boolean               | Show bookmark icon on the card                         |
+| showLeftLabel     | boolean               | Show left label on the card                            |
+| showRightLabel    | boolean               | Show right label on the card                           |
+| showTextToSpeech  | boolean               | Show text-to-speech icon on the card                   |
+| showTimer         | boolean               | Show timer on the card                                 |
+| timerDuration     | number                | Duration for the timer                                 |
+| bookmarkIcon      | React.ReactNode       | Custom bookmark icon                                   |
+| rightLabelIcon    | React.ReactNode       | Custom right label icon                                |
+| textToSpeechIcon  | React.ReactNode       | Custom text-to-speech icon                             |
+
 
 </details>
       <details>
@@ -277,7 +307,7 @@ function App() {
             backHtml: 'Back Content 1',
             showTimer: false,
             leftLabel: 'Label Left',
-            leftLabelValue: 'Left Value',
+   
             showLeftLabel: true,
             rightLabel: 'Label Right',
             rightLabelValue: 'Right Value',
@@ -304,11 +334,9 @@ function App() {
 ```
 
 </details>
-(TBD)
 
-## Configuration Options
 
-(TBD)
+
 
 ## Compatibility Information
 

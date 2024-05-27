@@ -1,0 +1,263 @@
+/* Utility mixins */
+
+/* Box Dimensions mixin */
+.setBoxDimensions {
+    width: 100%;
+    height: 100%;
+}
+
+/* Vendor Prefix mixin */
+.addVendorPrefix {
+    -webkit-transform: translate(-50%);
+    -moz-transform: translate(-50%);
+    -ms-transform: translate(-50%);
+    -o-transform: translate(-50%);
+    transform: translate(-50%);
+}
+
+/* Flexbox mixin */
+.setFlexbox {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Media Query mixins - manually applied in CSS */
+
+/* Responsive mixin for max-width */
+@media (max-width: 768px) {
+    .FlashcardWrapper {
+        font-size: 14px; /* Example of responsive style */
+    }
+}
+
+/* Main CSS for .FlashcardWrapper */
+.FlashcardWrapper * {
+    box-sizing: border-box;
+}
+
+.FlashcardWrapper {
+    bottom: 10%;
+    clear: left;
+    perspective: 1000px;
+    width: 560px;
+    height: 340px;
+    transform: none !important;
+}
+
+.FlashcardWrapper__item {
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    transform-style: preserve-3d;
+    background-color: transparent;
+    transition: transform 0.45s ease;
+}
+
+.FlashcardWrapper__item--front,
+.FlashcardWrapper__item--back {
+    top: 0;
+    left: 0;
+    color: black;
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+    position: absolute;
+    border-radius: inherit;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    backface-visibility: hidden;
+    box-shadow: 0 0 2.5rem 0 rgba(0, 0, 0, 0.16);
+}
+
+.FlashcardWrapper__item--front {
+    background-color: #ffffff;
+}
+
+.FlashcardWrapper__item--back {
+    background-color: #ffffff;
+    transform: rotateX(-180deg);
+}
+
+.FlashcardWrapper__item--flip {
+    transform: rotateX(180deg) !important;
+}
+
+.FlashcardWrapper__item--content {
+    width: 100%;
+    height: 100%;
+    border-radius: inherit;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 2px;
+}
+
+.timer {
+    position: absolute;
+    border-radius: 100%;
+    width: 80px;
+    height: 80px;
+    top: -3em;
+    background-color: whitesmoke;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.bookmarkAndHint {
+    position: absolute;
+    right: 1rem;
+    display: flex;
+    align-items: center;
+    top: 1rem;
+
+    gap: 1rem;
+}
+
+.questionText {
+    font-size: 28px;
+    margin: 0;
+}
+
+.difficultyLevel {
+    position: absolute;
+    left: 1rem;
+    top: 1rem;
+    display: flex;
+    gap: 10px;
+    margin: 0;
+    align-items: center;
+}
+
+.levelName {
+    background-color: white;
+    height: max-content;
+    border-radius: 16px;
+    padding: 4px 10px;
+    margin: 0;
+}
+
+.audio {
+    position: absolute;
+    bottom: 1rem;
+    right: 1rem;
+}
+
+.prevNext > button {
+    background-color: white;
+    outline: none;
+    border: none;
+}
+
+.rightLabelValueStyle {
+    border: 2px solid #ccc;
+    border-radius: 14px;
+    padding: 2px 6px;
+    background: #282c34;
+    box-shadow: 20px 20px 60px #bebebe, -20px -20px 60px #ffffff;
+    cursor: pointer;
+}
+
+.difficultyLevel {
+    position: absolute;
+    left: 1rem;
+    top: 1rem;
+    display: flex;
+    gap: 10px;
+    margin: 0;
+    align-items: center;
+}
+
+.rightTopLabelsContainer {
+    position: absolute;
+    right: 1rem;
+    display: flex;
+    align-items: center;
+    top: 1rem;
+    gap: 10px;
+}
+
+.audio {
+    position: absolute;
+    bottom: 2rem;
+    right: 1rem;
+    cursor: pointer;
+}
+
+.timerStyles {
+    position: relative;
+    bottom: 0.1rem;
+    width: 98%;
+    height: 5px;
+    border-bottom-left-radius: 1rem;
+    border-bottom-right-radius: 1rem;
+
+    background-color: #e0e0e0;
+}
+
+
+
+.timer-line {
+      position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    background-color: #76c7c0;
+    width: 100%;
+    height: 100%;
+    background-color: #4caf50;
+    animation-name: timer;
+    animation-timing-function: linear;
+    animation-fill-mode: forwards;
+}
+
+@keyframes timer {
+    from {
+        width: 0;
+    }
+    to {
+        width: 100%;
+    }
+}
+
+/* .timerStyles {
+    position: absolute;
+    border-radius: 100%;
+    bottom: 1rem;
+    left: 1rem;
+    width: 60px;
+    height: 60px;
+    background-color: #f3f3f3;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.progressBarContainer {
+    position: relative;
+    width: 60px;
+    height: 60px;
+}
+
+.timerTextStyles {
+    position: absolute;
+    font-size: 18px;
+    font-weight: bold;
+} */
+
+.rightLabelButton {
+    outline: none;
+    border: none;
+    background: transparent;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    color: black;
+}
