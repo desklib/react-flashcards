@@ -2,6 +2,9 @@
 
 `react-flashcards` is a comprehensive, customizable flashcard component for React applications, designed to enhance learning experiences with rich multimedia support and interactive features.
 
+
+![React-Flashcards Demo](./assets/demo.gif)
+
 ## Features
 
 -   **Image Support:** Integrate images directly into your flashcards.
@@ -20,6 +23,8 @@ Each flashcard can contain the following elements:
 -   **Hint:** Optional clues or assistance for solving the prompt.
 -   **Image:** Visual media related to the prompt.
 -   **Category:** Classification of the flashcard to organize by subject or difficulty.
+
+
 
 ## Installation
 

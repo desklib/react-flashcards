@@ -2,9 +2,9 @@
     "name": "react-flashcards",
     "repository": {
         "type": "git",
-        "url": "https://github.com/desklib/react-flashcards/blob/main/package.json"
+        "url": "https://github.com/desklib/react-flashcards"
     },
-    "version": "0.0.1",
+    "version": "0.0.2",
     "description": "A simple Flashcard component using React and TypeScript.",
     "main": "dist/cjs/index.js",
     "module": "dist/esm/index.js",
