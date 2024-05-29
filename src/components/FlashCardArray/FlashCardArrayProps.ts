@@ -3,16 +3,16 @@ export default interface FlashcardArrayProps {
         id: number;
         showTimer: boolean;
         timerDuration: number;
-        frontHtml: string | JSX.Element;
+        front: string | JSX.Element;
         flipped: boolean;
-        backHtml: string | JSX.Element;
-        isMarkdown?:boolean
+        back: string | JSX.Element;
+        isMarkdown?: boolean;
         frontStyle?: React.CSSProperties;
-
+        label: string | JSX.Element;
         frontContentStyle?: React.CSSProperties;
         currentIndex: number;
         backStyle?: React.CSSProperties;
-
+   
         backContentStyle?: React.CSSProperties;
 
         className?: string;
@@ -24,25 +24,20 @@ export default interface FlashcardArrayProps {
         style?: React.CSSProperties;
         width?: string;
 
-        leftLabel?: string;
-
-        rightLabel?: string;
-        rightLabelValue?: string;
         showBookMark?: boolean;
-        showLeftLabel?: boolean;
-        showRightLabel?: boolean;
+
         showTextToSpeech?: boolean;
     }>;
 
     controls?: boolean;
-isMarkdown?:boolean
+    isMarkdown?: boolean;
     forwardRef?: React.MutableRefObject<{
         nextCard: () => void;
         prevCard: () => void;
         resetArray: () => void;
     }> | null;
     showCount?: boolean;
-
+    label: string | JSX.Element;
     frontStyle?: React.CSSProperties;
 
     frontContentStyle?: React.CSSProperties;

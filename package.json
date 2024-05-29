@@ -6,24 +6,41 @@
     },
     "version": "0.0.5",
     "description": "A simple Flashcard component using React and TypeScript.",
-    "main": "dist/cjs/index.js",
-    "module": "dist/esm/index.js",
+    "main": "dist/index.js",
+    "module": "dist/index.es.js",
     "files": [
-        "dist",
-        "src/**/*.css"
+        "dist"
     ],
+    "private": false,
     "scripts": {
-        "build": "rm -rf dist/ && npm run build:esm && npm run build:cjs && npm run copy:css",
-        "copy:css": "mkdir -p dist/cjs/components/FlashCardArray && mkdir -p dist/esm/components/FlashCardArray && mkdir -p dist/cjs/components/FlashCard && mkdir -p dist/esm/components/FlashCard && cp src/components/FlashCardArray/FLashCardArray.css dist/cjs/components/FlashCardArray && cp src/components/FlashCardArray/FLashCardArray.css dist/esm/components/FlashCardArray && cp src/components/FlashCard/Flashcard.css dist/cjs/components/FlashCard && cp src/components/FlashCard/Flashcard.css dist/esm/components/FlashCard",
-        "build:esm": "tsc",
-        "build:cjs": "tsc --module CommonJS --outDir dist/cjs"
+        "build": "rollup -c"
     },
     "author": "Vidhi Tomar",
     "license": "MIT",
+ 
     "devDependencies": {
+        "@babel/core": "^7.24.6",
+        "@babel/preset-env": "^7.24.6",
+        "@babel/preset-react": "^7.24.6",
+        "@rollup/plugin-babel": "^6.0.4",
+        "@rollup/plugin-commonjs": "^25.0.8",
+        "@rollup/plugin-json": "^6.1.0",
+        "@rollup/plugin-node-resolve": "^15.2.3",
+        "@rollup/plugin-replace": "^5.0.5",
+        "@rollup/plugin-terser": "^0.4.4",
         "@types/node": "^20.12.12",
         "@types/react": "^18.3.2",
         "@types/react-dom": "^18.3.0",
+        "autoprefixer": "^10.4.19",
+        "css-loader": "^7.1.2",
+        "rollup": "^4.18.0",
+        "rollup-plugin-dts": "^6.1.1",
+        "rollup-plugin-peer-deps-external": "^2.2.4",
+        "rollup-plugin-postcss": "^4.0.2",
+        "rollup-plugin-typescript2": "^0.36.0",
+        "style-loader": "^4.0.0",
+        "ts-loader": "^9.5.1",
         "typescript": "^5.4.5"
-    }
+    },
+    "type": "module"
 }

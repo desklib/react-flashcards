@@ -6,6 +6,7 @@ import './FLashCardArray.css';
 
 function FlashCardArray({
     cards,
+    label,
     controls = true,
     showCount = true,
     onCardChange = () => {},
@@ -30,7 +31,7 @@ function FlashCardArray({
     const [flippedStates, setFlippedStates] = useState(cards.map(() => false));
     const [shuffledOrder, setShuffledOrder] = useState<number[]>([...Array(cards.length).keys()]);
     const [currentIndex, setCurrentIndex] = useState(0);
-    const placeholderCard = <FlashCard currentIndex={0} className="emptyFlashcardContainer" width="100%" backHtml="" frontHtml="" flipped={false} />;
+    const placeholderCard = <FlashCard  label={''} currentIndex={0} className="emptyFlashcardContainer" width="100%" back="" front="" flipped={false} />;
 
     const shuffleCards = useCallback(() => {
         const shuffled = [...Array(cards.length).keys()].sort(() => Math.random() - 0.5);
@@ -45,8 +46,9 @@ function FlashCardArray({
     const cardsList = cards.map((card, index) => (
         <FlashCard
             key={index}
-            frontHtml={card.frontHtml}
-            backHtml={card.backHtml}
+            label={card.label !== undefined ? card.label : label}
+            front={card.front}
+            back={card.back}
             manualFlipRef={cardNumber === index ? currentCardFlipRef : { current: null }}
             frontStyle={{ ...card.frontStyle, ...frontStyle }}
             frontContentStyle={{ ...card.frontContentStyle, ...frontContentStyle }}
@@ -57,12 +59,9 @@ function FlashCardArray({
             isMarkdown={isMarkdown ? isMarkdown : card.isMarkdown}
             currentIndex={currentIndex}
             timerDuration={card.timerDuration || timerDuration}
-            leftLabel={card.leftLabel}
-            rightLabel={card.rightLabel}
-            rightLabelValue={card.rightLabelValue}
+
             showBookMark={card.showBookMark}
-            showLeftLabel={card.showLeftLabel}
-            showRightLabel={card.showRightLabel}
+         
             showTextToSpeech={card.showTextToSpeech}
             height={card.height || '100%'}
             width={card.width || '100%'}

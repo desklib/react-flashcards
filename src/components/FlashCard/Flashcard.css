@@ -165,24 +165,6 @@
     cursor: pointer;
 }
 
-.difficultyLevel {
-    position: absolute;
-    left: 1rem;
-    top: 1rem;
-    display: flex;
-    gap: 10px;
-    margin: 0;
-    align-items: center;
-}
-
-.rightTopLabelsContainer {
-    position: absolute;
-    right: 1rem;
-    display: flex;
-    align-items: center;
-    top: 1rem;
-    gap: 10px;
-}
 
 .audio {
     position: absolute;
@@ -202,10 +184,8 @@
     background-color: #e0e0e0;
 }
 
-
-
 .timer-line {
-      position: absolute;
+    position: absolute;
     top: 0;
     left: 0;
     height: 100%;
@@ -260,4 +240,17 @@
     align-items: center;
     cursor: pointer;
     color: black;
+}
+
+.labelContainer {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    position: absolute;
+    top: 1rem;
+    padding: 4px 10px;
+    align-items: center;
+justify-content: space-between;
+font-size: 19px;
+
 }

@@ -8,34 +8,45 @@ import LightBulbIcon from '../icons/LightBulbIcon';
 import SpeakerWaveIcon from '../icons/SpeakerWaveIcon';
 
 function FlashCard({
-    frontHtml,
-    backHtml,
+    front,
+    back,
     className = '',
     frontStyle,
     backStyle,
     backContentStyle,
     frontContentStyle,
     timerStyles,
+
     height,
     borderRadius = '1rem',
     width,
+    styleOptions,
+    label = (
+        <div className="labelContainer">
+            <div >
+                <p style={{ margin: 0 }}>Level:Easy</p>
+            </div>
+            <div >
+                <button className="rightLabelButton">{<LightBulbIcon width={20} height={20} />}Hint</button>
+            </div>
+            
+        </div>
+    ),
     style,
     bookmarkIcon,
-    rightLabelIcon,
+
     textToSpeechIcon,
     onClickRightLabel,
     onClickBookmark,
     onClickTextToSpeech,
     showTimer = true,
     timerDuration = 10,
-    leftLabel = 'Level:Easy',
+
     currentIndex,
-    rightLabel = 'Hint',
-    rightLabelValue = 'HI_N',
+
     flipped = false,
     showBookMark = true,
-    showLeftLabel = true,
-    showRightLabel = true,
+
     showTextToSpeech = true,
     onCardFlip = (state = false) => {},
     manualFlipRef = { current: null },
@@ -43,6 +54,7 @@ function FlashCard({
 }: FlashcardProps) {
     const [isFlipped, setIsFlipped] = useState(false);
     const [timeLeft, setTimeLeft] = useState(timerDuration);
+
     const [showHint, setShowHint] = useState(false);
     const [animationKey, setAnimationKey] = useState(0);
 
@@ -50,28 +62,27 @@ function FlashCard({
         setAnimationKey((prevKey) => prevKey + 1);
     }, [currentIndex]);
 
-   useEffect(() => {
-       // Reset the timer and flip state whenever the card index changes
-       setTimeLeft(timerDuration);
-       setIsFlipped(false); // Reset flip state to initial state
-       setAnimationKey((prevKey) => prevKey + 1);
-   }, [currentIndex, timerDuration]);
+    useEffect(() => {
+        // Reset the timer and flip state whenever the card index changes
+        
+        setTimeLeft(timerDuration);
+        setIsFlipped(false); // Reset flip state to initial state
+        setAnimationKey((prevKey) => prevKey + 1);
+    }, [currentIndex, timerDuration]);
 
-   useEffect(() => {
-       // Timer countdown logic
-       if (showTimer) {
-           if (timeLeft > 0) {
-               const timerId = setTimeout(() => {
-                   setTimeLeft(timeLeft - 1);
-               }, 1000);
-               return () => clearTimeout(timerId);
-           } else {
-            
-               setIsFlipped(true); // Flip the card when timeLeft reaches 0
-           }
-       }
-   }, [timeLeft, showTimer]);
-
+    useEffect(() => {
+        // Timer countdown logic
+        if (showTimer) {
+            if (timeLeft > 0) {
+                const timerId = setTimeout(() => {
+                    setTimeLeft(timeLeft - 1);
+                }, 1000);
+                return () => clearTimeout(timerId);
+            } else {
+                setIsFlipped(true); // Flip the card when timeLeft reaches 0
+            }
+        }
+    }, [timeLeft, showTimer]);
 
     function markdownToHtml(markdown: string): string {
         // Convert headers
@@ -136,7 +147,7 @@ function FlashCard({
 
     const handleAudioClick = (event: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
         event.stopPropagation();
-        const textToRead = isFlipped ? extractText(backHtml) : extractText(frontHtml);
+        const textToRead = isFlipped ? extractText(back) : extractText(front);
         speakText(textToRead);
         if (onClickTextToSpeech) onClickTextToSpeech();
     };
@@ -226,34 +237,18 @@ function FlashCard({
                         cursor: manualFlipRef.current ? 'default' : 'pointer'
                     }}
                 >
-   
-                    {typeof frontHtml !== 'string' ? (
+                    {typeof front !== 'string' ? (
                         <div className="FlashcardWrapper__item--content" style={frontContentStyle}>
-                            {frontHtml}
+                            {front}
                         </div>
                     ) : (
                         <div className="FlashcardWrapper__item--content" style={frontContentStyle}>
-                            {isMarkdown ? <div dangerouslySetInnerHTML={{ __html: markdownToHtml(frontHtml) }} /> : frontHtml}
+                            {isMarkdown ? <div dangerouslySetInnerHTML={{ __html: markdownToHtml(front) }} /> : front}
                         </div>
                     )}
 
-                    <div className="difficultyLevel">
-                        {showLeftLabel && (
-                            <>
-                                <p style={{ margin: 0 }}>{leftLabel}</p>
-                            </>
-                        )}
-                    </div>
-                    <div className="rightTopLabelsContainer">
-                        {showRightLabel &&
-                            (!showHint ? (
-                                <button className="rightLabelButton" onClick={handleShowHint}>
-                                    {rightLabelIcon || <LightBulbIcon width={20} height={20} />} {rightLabel}
-                                </button>
-                            ) : (
-                                <div className="rightLabelValueStyle">{rightLabelValue}</div>
-                            ))}
-                    </div>
+                    {label}
+
                     <div className="audio" onClick={handleAudioClick}>
                         {showBookMark && (
                             <button onClick={handleBookmarkClick} style={{ outline: 'none', border: 'none', background: 'none', cursor: 'pointer' }}>
@@ -265,7 +260,6 @@ function FlashCard({
                     {showTimer && (
                         <div className="timerStyles">
                             <div key={animationKey} className="timer-line" style={{ animationDuration: `${timerDuration}s` }} />
-          
                         </div>
                     )}
                 </div>
@@ -276,13 +270,13 @@ function FlashCard({
                         cursor: manualFlipRef.current ? 'default' : 'pointer'
                     }}
                 >
-                    {typeof backHtml !== 'string' ? (
+                    {typeof back !== 'string' ? (
                         <div className="FlashcardWrapper__item--content" style={frontContentStyle}>
-                            {backHtml}
+                            {back}
                         </div>
                     ) : (
                         <div className="FlashcardWrapper__item--content" style={backContentStyle}>
-                            {isMarkdown ? <div dangerouslySetInnerHTML={{ __html: markdownToHtml(backHtml) }} /> : backHtml}
+                            {isMarkdown ? <div dangerouslySetInnerHTML={{ __html: markdownToHtml(back) }} /> : back}
                         </div>
                     )}
 
