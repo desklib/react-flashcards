@@ -230,11 +230,11 @@ function App() {
 
 </details>
       <details>
-<summary>FlashCardArray component</summary>  
-## API Documentation
+<summary>FlashCardArray Component</summary>  
+
 
 ### Basic FlashcardArray:
-## Possible Prop for FlashCardArray Component
+
 
 ## Possible Prop for FlashCardArray Component
 
