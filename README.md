@@ -236,33 +236,28 @@ function App() {
 ### Basic FlashcardArray:
 ## Possible Prop for FlashCardArray Component
 
-| Key               | Type                  | Default             |           Description     |                                                        | 
-| ----------------- | --------------------- | ------------------   ----------------------------------------------------------------------- |
-| \*front           | string \| JSX.Element |   none                    | HTML or JSX for the front of the card                                   |
-| \*back            | string \| JSX.Element |     none                  | HTML or JSX for the back of the card                                    |
-| isMarkdown        | boolean                |   false                  | If true, renders the frontHtml /backHtml as Markdown; defaults to false |
-| frontStyle        | React.CSSProperties     |    	{}         | Custom styles for the front of the card                                 |
-| frontContentStyle | React.CSSProperties      |    	{}         | Custom styles for the content on the front of the card                  |
-| backStyle         | React.CSSProperties      |    	{}     | Custom styles for the back of the card                                  |
-| backContentStyle  | React.CSSProperties       |    	{}    | Custom styles for the content on the back of the card                   |
-| className         | string                      |""       | Custom class name for the card                                          |
-| height            | string                       |""        | Height of the card                                                      |
-| width             | string                       |   ""    | Width of the card                                                       |
-| autoPlay        | boolean                        |false      | (Optional) If true, the flashcards will automatically flip after the timer duration and moves to next card                                              |
-| style             | React.CSSProperties  | {}  | Additional custom styles for the card                                   |
-| controls      | boolean              | true |  If true, navigation controls will be displayed to move between flashcards.                                      |
-| showCount  | boolean             |true  | If true, a progress bar will be displayed indicating the current position in the array.                                  |
-| timerDuration     | number            |10s    | Duration for autoPlay Timer                                                 |
-| bookmarkIcon      | React.ReactNode   | icon    | Custom bookmark icon                                                    |
-| textToSpeechIcon  | React.ReactNode    |icon   | Custom text-to-speech icon                                              |
-| label             | string | JSX.Element |  <div className="labelContainer">
-            <div>
-                <p style={{ margin: 0 }}>Level: Easy</p>
-            </div>
-            <div>
-                <button className="rightLabelButton">{<LightBulbIcon width={20} height={20} />}Hint</button>
-            </div>
-        </div> | HTML or JSX for the labels of card                                      |
+## Possible Prop for FlashCardArray Component
+
+| Key               | Type                  | Default             | Description                                                                 |
+|-------------------|-----------------------|---------------------|-----------------------------------------------------------------------------|
+| \*front           | string \| JSX.Element | none                | HTML or JSX for the front of the card                                       |
+| \*back            | string \| JSX.Element | none                | HTML or JSX for the back of the card                                        |
+| isMarkdown        | boolean               | false               | If true, renders the frontHtml /backHtml as Markdown; defaults to false     |
+| frontStyle        | React.CSSProperties   | {}                  | Custom styles for the front of the card                                     |
+| frontContentStyle | React.CSSProperties   | {}                  | Custom styles for the content on the front of the card                      |
+| backStyle         | React.CSSProperties   | {}                  | Custom styles for the back of the card                                      |
+| backContentStyle  | React.CSSProperties   | {}                  | Custom styles for the content on the back of the card                       |
+| className         | string                | ""                  | Custom class name for the card                                              |
+| height            | string                | ""                  | Height of the card                                                          |
+| width             | string                | ""                  | Width of the card                                                           |
+| autoPlay          | boolean               | false               | (Optional) If true, the flashcards will automatically flip after the timer duration and move to the next card |
+| style             | React.CSSProperties   | {}                  | Additional custom styles for the card                                       |
+| controls          | boolean               | true                | If true, navigation controls will be displayed to move between flashcards   |
+| showCount         | boolean               | true                | If true, a progress bar will be displayed indicating the current position in the array |
+| timerDuration     | number                | 10s                 | Duration for autoPlay Timer                                                 |
+| bookmarkIcon      | React.ReactNode       | icon                | Custom bookmark icon                                                        |
+| textToSpeechIcon  | React.ReactNode       | icon                | Custom text-to-speech icon                                                  |
+| label             | string \| JSX.Element | HTML or JSX for the labels of the card | HTML or JSX for the labels of the card                                      |
 
 ```javascript
 import { FlashCardArray } from 'react-flashcards';
