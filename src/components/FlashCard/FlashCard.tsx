@@ -23,52 +23,95 @@ function FlashCard({
     styleOptions,
     label = (
         <div className="labelContainer">
-            <div >
-                <p style={{ margin: 0 }}>Level:Easy</p>
+            <div>
+                <p style={{ margin: 0 }}>Level: Easy</p>
             </div>
-            <div >
+            <div>
                 <button className="rightLabelButton">{<LightBulbIcon width={20} height={20} />}Hint</button>
             </div>
-            
         </div>
     ),
     style,
     bookmarkIcon,
-
     textToSpeechIcon,
     onClickRightLabel,
     onClickBookmark,
     onClickTextToSpeech,
     showTimer = true,
     timerDuration = 10,
-
     currentIndex,
-
     flipped = false,
     showBookMark = true,
-
     showTextToSpeech = true,
     onCardFlip = (state = false) => {},
     manualFlipRef = { current: null },
     isMarkdown = false
 }: FlashcardProps) {
     const [isFlipped, setIsFlipped] = useState(false);
-    const [timeLeft, setTimeLeft] = useState(timerDuration);
-
+    const [timeLeft, setTimeLeft] = useState(timerDuration / 2);
     const [showHint, setShowHint] = useState(false);
     const [animationKey, setAnimationKey] = useState(0);
+    const [hasFlipped, setHasFlipped] = useState(false);
+    // console.log(flipped, 'flipped value');
+    //  useEffect(() => {
+    //      const totalDuration = timerDuration;
+    //      const halfDuration = totalDuration / 2;
+    //      const frontDuration =  halfDuration;
+    //      const backDuration =halfDuration;
+
+    //      // Reset the timer and flip state whenever the card index or timerDuration changes
+    //      setTimeLeft(frontDuration);
+    //      setIsFlipped(false); // Reset flip state to initial state
+    //      setHasFlipped(false);
+    //      setAnimationKey((prevKey) => prevKey + 1);
+
+    //      const frontTimeout = setTimeout(() => {
+    //          setIsFlipped(true);
+    //          setTimeLeft(backDuration);
+    //          setHasFlipped(true);
+    //          setAnimationKey((prevKey) => prevKey + 1);
+    //      }, frontDuration * 1000);
+
+    //      const backTimeout = setTimeout(() => {}, totalDuration * 1000);
+
+    //      return () => {
+    //          clearTimeout(frontTimeout);
+    //          clearTimeout(backTimeout);
+    //      };
+    //  }, [currentIndex, timerDuration]);
 
     useEffect(() => {
-        setAnimationKey((prevKey) => prevKey + 1);
-    }, [currentIndex]);
+        if (flipped) {
 
-    useEffect(() => {
-        // Reset the timer and flip state whenever the card index changes
-        
-        setTimeLeft(timerDuration);
-        setIsFlipped(false); // Reset flip state to initial state
-        setAnimationKey((prevKey) => prevKey + 1);
-    }, [currentIndex, timerDuration]);
+            const totalDuration = timerDuration;
+            const halfDuration = totalDuration / 2;
+            const frontDuration = halfDuration;
+            const backDuration = halfDuration;
+
+            // Reset the timer and flip state whenever the card index or timerDuration changes
+            setTimeLeft(frontDuration);
+            setIsFlipped(false); // Reset flip state to initial state
+
+
+            // setAnimationKey((prevKey) => prevKey + 1);
+            const frontTimeout = setTimeout(() => {
+                setIsFlipped(true);
+
+                setTimeLeft(backDuration);
+                setHasFlipped(true);
+                flipped = true;
+            }, frontDuration * 1000);
+
+            const backTimeout = setTimeout(() => {}, totalDuration * 1000);
+
+            return () => {
+                clearTimeout(frontTimeout);
+                clearTimeout(backTimeout);
+            };
+        } else {
+            console.log('not flipped');
+        }
+    }, [currentIndex, timerDuration, flipped]);
 
     useEffect(() => {
         // Timer countdown logic
@@ -78,8 +121,6 @@ function FlashCard({
                     setTimeLeft(timeLeft - 1);
                 }, 1000);
                 return () => clearTimeout(timerId);
-            } else {
-                setIsFlipped(true); // Flip the card when timeLeft reaches 0
             }
         }
     }, [timeLeft, showTimer]);
@@ -224,7 +265,7 @@ function FlashCard({
                     borderRadius: borderRadius
                 }}
                 onClick={() => {
-                    if (showTimer && timeLeft > 0) return; // Prevent flip if timer is running
+                    // if (showTimer && timeLeft > 0) return; // Prevent flip if timer is running
                     if (manualFlipRef.current) return;
                     setIsFlipped(!isFlipped);
                     onCardFlip(!isFlipped);
@@ -257,11 +298,6 @@ function FlashCard({
                         )}
                         {showTextToSpeech && (textToSpeechIcon || <SpeakerWaveIcon width={20} height={20} />)}
                     </div>
-                    {showTimer && (
-                        <div className="timerStyles">
-                            <div key={animationKey} className="timer-line" style={{ animationDuration: `${timerDuration}s` }} />
-                        </div>
-                    )}
                 </div>
                 <div
                     className="FlashcardWrapper__item--back"
@@ -271,7 +307,7 @@ function FlashCard({
                     }}
                 >
                     {typeof back !== 'string' ? (
-                        <div className="FlashcardWrapper__item--content" style={frontContentStyle}>
+                        <div className="FlashcardWrapper__item--content" style={backContentStyle}>
                             {back}
                         </div>
                     ) : (

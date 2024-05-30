@@ -3,7 +3,7 @@ import React from 'react';
 export interface StyleOptions {
     containerStyle?: React.CSSProperties;
     timerStyles?: React.CSSProperties;
-    labelStyle?:React.CSSProperties
+    labelStyle?: React.CSSProperties;
 }
 interface FlashcardProps {
     showTimer?: boolean;
@@ -11,7 +11,7 @@ interface FlashcardProps {
     label: string | JSX.Element;
 
     showBookMark?: boolean;
-  
+
     showTextToSpeech?: boolean;
     frontStyle?: React.CSSProperties;
     backStyle?: React.CSSProperties;
@@ -22,7 +22,7 @@ interface FlashcardProps {
     back: string | JSX.Element;
     styleOptions?: any;
     bookmarkIcon?: React.ReactNode;
-    
+
     textToSpeechIcon?: React.ReactNode;
     onCardFlip?: (state: boolean) => void;
     className?: string;
@@ -48,6 +48,5 @@ interface FlashcardProps {
 
     manualFlipRef?: React.MutableRefObject<() => void> | { current: null } | undefined; // Make sure manualFlipRef is optiona
 }
-
 
 export default FlashcardProps;

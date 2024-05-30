@@ -1,10 +1,11 @@
 export default interface FlashcardArrayProps {
     cards: Array<{
         id: number;
+        [key: string]: any;
         showTimer: boolean;
         timerDuration: number;
         front: string | JSX.Element;
-        flipped: boolean;
+
         back: string | JSX.Element;
         isMarkdown?: boolean;
         frontStyle?: React.CSSProperties;
@@ -12,7 +13,7 @@ export default interface FlashcardArrayProps {
         frontContentStyle?: React.CSSProperties;
         currentIndex: number;
         backStyle?: React.CSSProperties;
-   
+
         backContentStyle?: React.CSSProperties;
 
         className?: string;
@@ -28,7 +29,8 @@ export default interface FlashcardArrayProps {
 
         showTextToSpeech?: boolean;
     }>;
-
+    autoPlay?: boolean;
+    flipped?: boolean;
     controls?: boolean;
     isMarkdown?: boolean;
     forwardRef?: React.MutableRefObject<{
@@ -39,11 +41,14 @@ export default interface FlashcardArrayProps {
     showCount?: boolean;
     label: string | JSX.Element;
     frontStyle?: React.CSSProperties;
-
     frontContentStyle?: React.CSSProperties;
 
     backStyle?: React.CSSProperties;
-
+    styleOptions?: {
+        FlashcardArrayContainerControl?: React.CSSProperties;
+        progressBarContainerStyle?: React.CSSProperties;
+        progressFillStyle?: React.CSSProperties;
+    };
     backContentStyle?: React.CSSProperties;
     showTimer: boolean;
     FlashcardArrayStyle?: React.CSSProperties;

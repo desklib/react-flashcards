@@ -77,13 +77,20 @@
 .FlashcardArrayContainerControl {
 
   width: 100%;
+  /* height: 40px; */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* justify-content: space-between; */
+}
+.controlsContainer{
+   width: 100%;
   height: 40px;
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
 }
-
 .FlashcardArrayContainerControl button {
   padding: 0;
   border: none;
@@ -104,4 +111,37 @@
 
 .FlashcardArrayContainerControl_Counts {
   font-size: 15px !important;
+}
+.progressBarContainerStyle {
+    position: relative;
+    bottom: 0.1rem;
+    width: 98%;
+    height: 5px;
+    border-bottom-left-radius: 1rem;
+    border-bottom-right-radius: 1rem;
+
+    background-color: #e0e0e0;
+}
+
+.progressFillStyle {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    background-color: #76c7c0;
+    width: 100%;
+    height: 100%;
+    background-color: #4caf50;
+    animation-name: timer;
+    animation-timing-function: linear;
+    animation-fill-mode: forwards;
+}
+
+@keyframes timer {
+    from {
+        width: 0;
+    }
+    to {
+        width: 100%;
+    }
 }
