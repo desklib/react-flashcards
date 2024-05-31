@@ -2,11 +2,10 @@ import React from 'react';
 
 export interface StyleOptions {
     containerStyle?: React.CSSProperties;
-    timerStyles?: React.CSSProperties;
-    labelStyle?: React.CSSProperties;
+    
 }
 interface FlashcardProps {
-    showTimer?: boolean;
+
     timerDuration?: number;
     label: string | JSX.Element;
 
@@ -17,7 +16,7 @@ interface FlashcardProps {
     backStyle?: React.CSSProperties;
     frontContentStyle?: React.CSSProperties;
     backContentStyle?: React.CSSProperties;
-    timerStyles?: React.CSSProperties;
+  
     front: string | JSX.Element;
     back: string | JSX.Element;
     styleOptions?: any;
@@ -42,7 +41,7 @@ interface FlashcardProps {
      * CSS width of the wrapper div
      */
     width?: string;
-    onClickRightLabel?: () => void;
+
     onClickBookmark?: () => void;
     onClickTextToSpeech?: () => void;
 

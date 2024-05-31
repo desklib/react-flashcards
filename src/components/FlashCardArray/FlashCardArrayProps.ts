@@ -2,7 +2,7 @@ export default interface FlashcardArrayProps {
     cards: Array<{
         id: number;
         [key: string]: any;
-        showTimer: boolean;
+  
         timerDuration: number;
         front: string | JSX.Element;
 
@@ -39,6 +39,7 @@ export default interface FlashcardArrayProps {
         resetArray: () => void;
     }> | null;
     showCount?: boolean;
+    isFlap?: boolean;
     label: string | JSX.Element;
     frontStyle?: React.CSSProperties;
     frontContentStyle?: React.CSSProperties;
@@ -50,7 +51,7 @@ export default interface FlashcardArrayProps {
         progressFillStyle?: React.CSSProperties;
     };
     backContentStyle?: React.CSSProperties;
-    showTimer: boolean;
+
     FlashcardArrayStyle?: React.CSSProperties;
 
     onCardChange?: (id: number, index: number) => void;

@@ -15,7 +15,6 @@ function FlashCard({
     backStyle,
     backContentStyle,
     frontContentStyle,
-    timerStyles,
 
     height,
     borderRadius = '1rem',
@@ -34,10 +33,10 @@ function FlashCard({
     style,
     bookmarkIcon,
     textToSpeechIcon,
-    onClickRightLabel,
+
     onClickBookmark,
     onClickTextToSpeech,
-    showTimer = true,
+
     timerDuration = 10,
     currentIndex,
     flipped = false,
@@ -82,7 +81,6 @@ function FlashCard({
 
     useEffect(() => {
         if (flipped) {
-
             const totalDuration = timerDuration;
             const halfDuration = totalDuration / 2;
             const frontDuration = halfDuration;
@@ -91,7 +89,6 @@ function FlashCard({
             // Reset the timer and flip state whenever the card index or timerDuration changes
             setTimeLeft(frontDuration);
             setIsFlipped(false); // Reset flip state to initial state
-
 
             // setAnimationKey((prevKey) => prevKey + 1);
             const frontTimeout = setTimeout(() => {
@@ -113,17 +110,17 @@ function FlashCard({
         }
     }, [currentIndex, timerDuration, flipped]);
 
-    useEffect(() => {
-        // Timer countdown logic
-        if (showTimer) {
-            if (timeLeft > 0) {
-                const timerId = setTimeout(() => {
-                    setTimeLeft(timeLeft - 1);
-                }, 1000);
-                return () => clearTimeout(timerId);
-            }
-        }
-    }, [timeLeft, showTimer]);
+    // useEffect(() => {
+    //     // Timer countdown logic
+    //     if (showTimer) {
+    //         if (timeLeft > 0) {
+    //             const timerId = setTimeout(() => {
+    //                 setTimeLeft(timeLeft - 1);
+    //             }, 1000);
+    //             return () => clearTimeout(timerId);
+    //         }
+    //     }
+    // }, [timeLeft, ]);
 
     function markdownToHtml(markdown: string): string {
         // Convert headers
@@ -169,16 +166,10 @@ function FlashCard({
 
     const onManualFlip = () => {
         // Allow manual flip only if timer is not running or has reached zero
-        if (!showTimer || timeLeft === 0) {
+    
             setIsFlipped((prevIsFlipped) => !prevIsFlipped); // Update state based on previous value
             onCardFlip(!isFlipped);
-        }
-    };
-
-    const handleShowHint = (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
-        event.stopPropagation();
-        setShowHint(!showHint);
-        if (onClickRightLabel) onClickRightLabel();
+    
     };
 
     const handleBookmarkClick = (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {

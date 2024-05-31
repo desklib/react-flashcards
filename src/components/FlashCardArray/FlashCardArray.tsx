@@ -19,7 +19,7 @@ function FlashCardArray({
     currentCardFlipRef,
     width = '100%',
     cycle = false,
-    showTimer = true,
+
     styleOptions = {},
 
     timerDuration = 10,
@@ -35,11 +35,10 @@ function FlashCardArray({
     const [flippedStates, setFlippedStates] = useState(cards.map(() => false));
     const [shuffledOrder, setShuffledOrder] = useState<number[]>([...Array(cards.length).keys()]);
     const [currentIndex, setCurrentIndex] = useState(0);
-    const [displayIndex, setDisplayIndex] = useState(1); // Track the display index, starting from 1
 
     const [animationKey, setAnimationKey] = useState(0);
-    const placeholderCard = <FlashCard label={''} currentIndex={0} showTimer={true} className="emptyFlashcardContainer" width="100%" back="" front="" flipped={false} />;
-
+    const placeholderCard = <FlashCard label={''} currentIndex={0}  className="emptyFlashcardContainer" width="100%" back="" front="" flipped={false} />;
+   
     const cardsList = cards.map((card, index) => (
         <FlashCard
             key={index}
@@ -53,7 +52,7 @@ function FlashCardArray({
             backStyle={{ ...card.backStyle, ...backStyle }}
             backContentStyle={{ ...card.backContentStyle, ...backContentStyle }}
             className={card.className}
-            showTimer={showTimer ? showTimer : card.showTimer}
+      
             isMarkdown={isMarkdown ? isMarkdown : card.isMarkdown}
             currentIndex={currentIndex}
             timerDuration={card.timerDuration || timerDuration}
@@ -72,12 +71,12 @@ function FlashCardArray({
                     setIsOverFlow('');
                 }, 3);
             }}
-            // flipped={flippedStates[index]}
+
         />
     ));
 
-    // Initialize shuffled order
-    // Initialize shuffled order
+
+
 
     const resetArray = () => {
         setCardsInView(!cycle ? [-1, 0, 1] : [cards.length - 1, 0, 1]);
@@ -176,14 +175,23 @@ function FlashCardArray({
     useEffect(() => {
         setAnimationKey((prevKey) => prevKey + 1);
     }, [currentIndex]);
-
-    useEffect(() => {
-        setShuffledOrder([...Array(cards.length).keys()]);
-    }, [cards]);
-
-    const shuffle = (array: string[]) => {
-        return array.sort(() => Math.random() - 0.5);
+    const shuffle = (array: number[]) => {
+        for (let i = array.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [array[i], array[j]] = [array[j], array[i]];
+        }
+        return array;
     };
+
+    const shuffleCards = useCallback(() => {
+        const newShuffledOrder = shuffle([...Array(cards.length).keys()]);
+        setCurrentIndex(0);
+        setShuffledOrder(newShuffledOrder);
+        setCardNumber(0);
+        setCardsInView([newShuffledOrder[0], newShuffledOrder[1] || -1, newShuffledOrder[2] || -1]);
+        setFlippedStates(cards.map(() => false));
+        onCardChange(cards[newShuffledOrder[0]].id, 1);
+    }, [cards, cycle, onCardChange]);
 
     // useEffect(() => {
     //     let autoplayTimer: NodeJS.Timeout;
@@ -198,17 +206,7 @@ function FlashCardArray({
     //         clearTimeout(autoplayTimer);
     //     };
     // }, [isAutoplay, timerDuration, cardNumber, nextCard]);
-  useEffect(() => {
-      setShuffledOrder([...Array(cards.length).keys()]);
-  }, [cards]);
-
-  const shuffleCards = useCallback(() => {
-      // Shuffle the original card indices using Fisher-Yates algorithm
-      for (let i = cards.length - 1; i > 0; i--) {
-          const j = Math.floor(Math.random() * (i + 1));
-          [shuffledOrder[i], shuffledOrder[j]] = [shuffledOrder[j], shuffledOrder[i]];
-      }
-  }, [cards.length]);
+    console.log(cards);
     return (
         <div className="FlashcardArrayContainer" style={{ ...FlashcardArrayStyle, width }}>
             <div className="FlashcardArrayContainer__CardFrame" style={{ overflow: isOverFlow }}>
@@ -245,7 +243,7 @@ function FlashCardArray({
                                 </button>
                                 {showCount && (
                                     <span className="FlashcardArrayContainerControl_Counts">
-                                        {cardNumber + 1}/{cardsList.length}
+                                        {shuffledOrder.indexOf(cardNumber) + 1}/{cardsList.length}
                                     </span>
                                 )}
 
