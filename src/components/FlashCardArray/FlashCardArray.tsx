@@ -1,7 +1,7 @@
 import React, { useCallback, useEffect, useState } from 'react';
 import FlashcardArrayProps from './FlashCardArrayProps';
 import FlashCard from '../FlashCard/FlashCard';
-import './FLashCardArray.css';
+import './FlashCardArray.css';
 
 function FlashCardArray({
     cards,
@@ -19,9 +19,7 @@ function FlashCardArray({
     currentCardFlipRef,
     width = '100%',
     cycle = false,
-
     styleOptions = {},
-
     timerDuration = 10,
     autoPlay = false,
     isMarkdown = false,
@@ -35,10 +33,9 @@ function FlashCardArray({
     const [flippedStates, setFlippedStates] = useState(cards.map(() => false));
     const [shuffledOrder, setShuffledOrder] = useState<number[]>([...Array(cards.length).keys()]);
     const [currentIndex, setCurrentIndex] = useState(0);
-
     const [animationKey, setAnimationKey] = useState(0);
-    const placeholderCard = <FlashCard label={''} currentIndex={0}  className="emptyFlashcardContainer" width="100%" back="" front="" flipped={false} />;
-   
+    const placeholderCard = <FlashCard label={''} currentIndex={0} className="emptyFlashcardContainer" width="100%" back="" front="" flipped={false} />;
+
     const cardsList = cards.map((card, index) => (
         <FlashCard
             key={index}
@@ -52,7 +49,6 @@ function FlashCardArray({
             backStyle={{ ...card.backStyle, ...backStyle }}
             backContentStyle={{ ...card.backContentStyle, ...backContentStyle }}
             className={card.className}
-      
             isMarkdown={isMarkdown ? isMarkdown : card.isMarkdown}
             currentIndex={currentIndex}
             timerDuration={card.timerDuration || timerDuration}
@@ -71,12 +67,8 @@ function FlashCardArray({
                     setIsOverFlow('');
                 }, 3);
             }}
-
         />
     ));
-
-
-
 
     const resetArray = () => {
         setCardsInView(!cycle ? [-1, 0, 1] : [cards.length - 1, 0, 1]);
@@ -112,7 +104,6 @@ function FlashCardArray({
             }
 
             onCardChange(cards[currentCardNumber].id, nextIndex + 1);
-            console.log(cards[currentCardNumber].id, nextIndex + 1, 'current', currentCardNumber);
             return currentCardNumber;
         });
     }, [shuffledOrder, cycle, cards, onCardChange, flippedStates]);
@@ -175,7 +166,8 @@ function FlashCardArray({
     useEffect(() => {
         setAnimationKey((prevKey) => prevKey + 1);
     }, [currentIndex]);
-    const shuffle = (array: number[]) => {
+
+    const shuffle = (array) => {
         for (let i = array.length - 1; i > 0; i--) {
             const j = Math.floor(Math.random() * (i + 1));
             [array[i], array[j]] = [array[j], array[i]];
@@ -185,28 +177,14 @@ function FlashCardArray({
 
     const shuffleCards = useCallback(() => {
         const newShuffledOrder = shuffle([...Array(cards.length).keys()]);
-        setCurrentIndex(0);
         setShuffledOrder(newShuffledOrder);
-        setCardNumber(0);
+        setCardNumber(newShuffledOrder[0]);
+        setCurrentIndex(0);
         setCardsInView([newShuffledOrder[0], newShuffledOrder[1] || -1, newShuffledOrder[2] || -1]);
         setFlippedStates(cards.map(() => false));
         onCardChange(cards[newShuffledOrder[0]].id, 1);
-    }, [cards, cycle, onCardChange]);
+    }, [cards, onCardChange]);
 
-    // useEffect(() => {
-    //     let autoplayTimer: NodeJS.Timeout;
-
-    //     if (isAutoplay) {
-    //         autoplayTimer = setTimeout(() => {
-    //             nextCard();
-    //         }, timerDuration * 1500);
-    //     }
-
-    //     return () => {
-    //         clearTimeout(autoplayTimer);
-    //     };
-    // }, [isAutoplay, timerDuration, cardNumber, nextCard]);
-    console.log(cards);
     return (
         <div className="FlashcardArrayContainer" style={{ ...FlashcardArrayStyle, width }}>
             <div className="FlashcardArrayContainer__CardFrame" style={{ overflow: isOverFlow }}>
@@ -215,6 +193,11 @@ function FlashCardArray({
                 {cardsInView[2] !== -1 ? cardsList[cardsInView[2]] : placeholderCard}
             </div>
 
+            {isAutoplay && (
+                <div className="progressBarContainerStyle" style={progressBarContainerStyle}>
+                    <div key={animationKey} className="progressFillStyle" style={{ animationDuration: `${timerDuration}s`, ...progressFillStyle }} />
+                </div>
+            )}
             {(controls || showCount) && (
                 <div className="FlashcardArrayContainerControl" style={FlashcardArrayContainerControl}>
                     <div className="controlsContainer">
@@ -273,11 +256,6 @@ function FlashCardArray({
                             </button>
                         )}
                     </div>
-                    {isAutoplay && (
-                        <div className="progressBarContainerStyle" style={progressBarContainerStyle}>
-                            <div key={animationKey} className="progressFillStyle" style={{ animationDuration: `${timerDuration}s`, ...progressFillStyle }} />
-                        </div>
-                    )}
                 </div>
             )}
         </div>
