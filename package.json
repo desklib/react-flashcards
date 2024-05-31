@@ -11,13 +11,21 @@
     "files": [
         "dist"
     ],
+    "keywords": [
+        "react-flashcards",
+        "react",
+        "reactjs",
+        "flash card",
+        "flash-card",
+        "flip cards",
+        "digital-flashcards"
+    ],
     "private": false,
     "scripts": {
         "build": "rollup -c"
     },
     "author": "Vidhi Tomar",
     "license": "MIT",
- 
     "devDependencies": {
         "@babel/core": "^7.24.6",
         "@babel/preset-env": "^7.24.6",
