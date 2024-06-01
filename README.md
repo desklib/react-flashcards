@@ -1,10 +1,8 @@
 # Welcome to React-Flashcards
 
 `react-flashcards` is a comprehensive, customizable flashcard component for React applications, designed to enhance learning experiences with rich multimedia support and interactive features.
-<video width="600" controls>
-  <source src="./assets/demo.mov" type="video/quicktime">
-  Your browser does not support the video tag.
-</video>
+
+![React-Flashcards Demo]('https://private-user-images.githubusercontent.com/80397956/335798459-7bdcdb38-ae2d-498b-b25c-d37a160dd022.gif?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3MTcyNDI0ODksIm5iZiI6MTcxNzI0MjE4OSwicGF0aCI6Ii84MDM5Nzk1Ni8zMzU3OTg0NTktN2JkY2RiMzgtYWUyZC00OThiLWIyNWMtZDM3YTE2MGRkMDIyLmdpZj9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFWQ09EWUxTQTUzUFFLNFpBJTJGMjAyNDA2MDElMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjQwNjAxVDExNDMwOVomWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPTc5ZGY2NzExZDkyZWMwNTEwYTI3YzI2NDVjNTExYzdiMmVmY2YyOGNhNDRhZWI4MTVlMjNiZmYxZGI1ZjEzNzkmWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0JmFjdG9yX2lkPTAma2V5X2lkPTAmcmVwb19pZD0wIn0.AWRoQD2yzkdGJYykozTPc1r90aGcwgJVsLvQOHuboMk')
 
 ## Features
 
@@ -104,8 +102,7 @@ export default MyFlashcardComponent;
 
 | showTextToSpeech | boolean | Show text-to-speech icon on the card |
 
- | timerDuration | number | Duration for the timer |
-  | bookmarkIcon |React.ReactNode | Custom bookmark icon |
+| timerDuration | number | Duration for the timer | | bookmarkIcon |React.ReactNode | Custom bookmark icon |
 
 | textToSpeechIcon | React.ReactNode | Custom text-to-speech icon |
 
@@ -208,58 +205,56 @@ function App() {
 
 ## Possible Prop for FlashCard Component
 
-| Key               | Type                  | Default             | Description                                                             |
-| ----------------- | --------------------- | ------------------- | ----------------------------------------------------------------------- |
-| \*id              | number                |                     | Unique identifier for the flashcard                                     |
-| \*front           | string \| JSX.Element | none                | HTML or JSX for the front of the card                                   |
-| \*back            | string \| JSX.Element | none                | HTML or JSX for the back of the card                                    |
-| isMarkdown        | boolean               | false               | If true, renders the frontHtml /backHtml as Markdown; defaults to false |
-| frontStyle        | React.CSSProperties   | {}                  | Custom styles for the front of the card                                 |
-| frontContentStyle | React.CSSProperties   | {}                  | Custom styles for the content on the front of the card                  |
-| backStyle         | React.CSSProperties   | {}                  | Custom styles for the back of the card                                  |
-| backContentStyle  | React.CSSProperties   | {}                  | Custom styles for the content on the back of the card                   |
-| className         | string                | ""                  | Custom class name for the card                                          |
-| height            | string                | ""                  | Height of the card                                                      |
-| width             | string                | ""                  | Width of the card                                                       |
-| borderRadius      | string                | ""                  | Border radius of the card                                               |
-| style             | React.CSSProperties   | {}                  | Additional custom styles for the card                                   |
-| showBookMark      | boolean               | true              | Show bookmark icon on the card                                          |
-| showTextToSpeech  | boolean               | true               | Show text-to-speech icon on the card                                    |
-| timerDuration     | number                |                     | Duration for autoPlay Timer                                             |
-| bookmarkIcon      | React.ReactNode       | icon                | Custom bookmark icon                                                    |
-| textToSpeechIcon  | React.ReactNode       | icon                | Custom text-to-speech icon                                              |
-| label             | string \| JSX.Element | none | HTML or JSX for the labels of card                              |
+| Key               | Type                  | Default | Description                                                             |
+| ----------------- | --------------------- | ------- | ----------------------------------------------------------------------- |
+| \*id              | number                |         | Unique identifier for the flashcard                                     |
+| \*front           | string \| JSX.Element | none    | HTML or JSX for the front of the card                                   |
+| \*back            | string \| JSX.Element | none    | HTML or JSX for the back of the card                                    |
+| isMarkdown        | boolean               | false   | If true, renders the frontHtml /backHtml as Markdown; defaults to false |
+| frontStyle        | React.CSSProperties   | {}      | Custom styles for the front of the card                                 |
+| frontContentStyle | React.CSSProperties   | {}      | Custom styles for the content on the front of the card                  |
+| backStyle         | React.CSSProperties   | {}      | Custom styles for the back of the card                                  |
+| backContentStyle  | React.CSSProperties   | {}      | Custom styles for the content on the back of the card                   |
+| className         | string                | ""      | Custom class name for the card                                          |
+| height            | string                | ""      | Height of the card                                                      |
+| width             | string                | ""      | Width of the card                                                       |
+| borderRadius      | string                | ""      | Border radius of the card                                               |
+| style             | React.CSSProperties   | {}      | Additional custom styles for the card                                   |
+| showBookMark      | boolean               | true    | Show bookmark icon on the card                                          |
+| showTextToSpeech  | boolean               | true    | Show text-to-speech icon on the card                                    |
+| timerDuration     | number                |         | Duration for autoPlay Timer                                             |
+| bookmarkIcon      | React.ReactNode       | icon    | Custom bookmark icon                                                    |
+| textToSpeechIcon  | React.ReactNode       | icon    | Custom text-to-speech icon                                              |
+| label             | string \| JSX.Element | none    | HTML or JSX for the labels of card                                      |
 
 </details>
       <details>
-<summary>FlashCardArray Component</summary>  
-
+<summary>FlashCardArray Component</summary>
 
 ### Basic FlashcardArray:
 
-
 ## Possible Prop for FlashCardArray Component
 
-| Key               | Type                  | Default             | Description                                                                 |
-|-------------------|-----------------------|---------------------|-----------------------------------------------------------------------------|
-| \*front           | string \| JSX.Element | none                | HTML or JSX for the front of the card                                       |
-| \*back            | string \| JSX.Element | none                | HTML or JSX for the back of the card                                        |
-| isMarkdown        | boolean               | false               | If true, renders the frontHtml /backHtml as Markdown; defaults to false     |
-| frontStyle        | React.CSSProperties   | {}                  | Custom styles for the front of the card                                     |
-| frontContentStyle | React.CSSProperties   | {}                  | Custom styles for the content on the front of the card                      |
-| backStyle         | React.CSSProperties   | {}                  | Custom styles for the back of the card                                      |
-| backContentStyle  | React.CSSProperties   | {}                  | Custom styles for the content on the back of the card                       |
-| className         | string                | ""                  | Custom class name for the card                                              |
-| height            | string                | ""                  | Height of the card                                                          |
-| width             | string                | ""                  | Width of the card                                                           |
-| autoPlay          | boolean               | false               | (Optional) If true, the flashcards will automatically flip after the timer duration and move to the next card |
-| style             | React.CSSProperties   | {}                  | Additional custom styles for the card                                       |
-| controls          | boolean               | true                | If true, navigation controls will be displayed to move between flashcards   |
-| showCount         | boolean               | true                | If true, a progress bar will be displayed indicating the current position in the array |
-| timerDuration     | number                | 10s                 | Duration for autoPlay Timer                                                 |
-| bookmarkIcon      | React.ReactNode       | icon                | Custom bookmark icon                                                        |
-| textToSpeechIcon  | React.ReactNode       | icon                | Custom text-to-speech icon                                                  |
-| label             | string \| JSX.Element | none | HTML or JSX for the labels of the card                                      |
+| Key               | Type                  | Default | Description                                                                                                   |
+| ----------------- | --------------------- | ------- | ------------------------------------------------------------------------------------------------------------- |
+| \*front           | string \| JSX.Element | none    | HTML or JSX for the front of the card                                                                         |
+| \*back            | string \| JSX.Element | none    | HTML or JSX for the back of the card                                                                          |
+| isMarkdown        | boolean               | false   | If true, renders the frontHtml /backHtml as Markdown; defaults to false                                       |
+| frontStyle        | React.CSSProperties   | {}      | Custom styles for the front of the card                                                                       |
+| frontContentStyle | React.CSSProperties   | {}      | Custom styles for the content on the front of the card                                                        |
+| backStyle         | React.CSSProperties   | {}      | Custom styles for the back of the card                                                                        |
+| backContentStyle  | React.CSSProperties   | {}      | Custom styles for the content on the back of the card                                                         |
+| className         | string                | ""      | Custom class name for the card                                                                                |
+| height            | string                | ""      | Height of the card                                                                                            |
+| width             | string                | ""      | Width of the card                                                                                             |
+| autoPlay          | boolean               | false   | (Optional) If true, the flashcards will automatically flip after the timer duration and move to the next card |
+| style             | React.CSSProperties   | {}      | Additional custom styles for the card                                                                         |
+| controls          | boolean               | true    | If true, navigation controls will be displayed to move between flashcards                                     |
+| showCount         | boolean               | true    | If true, a progress bar will be displayed indicating the current position in the array                        |
+| timerDuration     | number                | 10s     | Duration for autoPlay Timer                                                                                   |
+| bookmarkIcon      | React.ReactNode       | icon    | Custom bookmark icon                                                                                          |
+| textToSpeechIcon  | React.ReactNode       | icon    | Custom text-to-speech icon                                                                                    |
+| label             | string \| JSX.Element | none    | HTML or JSX for the labels of the card                                                                        |
 
 ```javascript
 import { FlashCardArray } from 'react-flashcards';
@@ -338,7 +333,7 @@ function App() {
             id: 1,
             front: 'Front Content 1',
             back: 'Back Content 1',
-     
+
             label: (
                 <div>
                     <p style={{ margin: 0 }}>Level: Easy</p>
@@ -354,7 +349,7 @@ function App() {
             id: 2,
             front: 'Front Content 2',
             back: 'Back Content 2',
-       
+
             label: (
                 <div>
                     <p style={{ margin: 0 }}>Sub: math</p>
