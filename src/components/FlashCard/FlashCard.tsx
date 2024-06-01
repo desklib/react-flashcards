@@ -22,12 +22,7 @@ function FlashCard({
     styleOptions,
     label = (
         <div className="labelContainer">
-            <div>
-                <p style={{ margin: 0 }}>Level: Easy</p>
-            </div>
-            <div>
-                <button className="rightLabelButton">{<LightBulbIcon width={20} height={20} />}Hint</button>
-            </div>
+           
         </div>
     ),
     style,
