@@ -1,0 +1,39 @@
+# Sample workflow for building and deploying a React project to GitHub Pages
+#
+# Make sure your React project is set up to generate static files for deployment
+#
+name: Deploy React App to GitHub Pages
+
+on:
+  # Runs on pushes targeting the default branch (usually main)
+  push:
+    branches: ["main"]
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+jobs:
+  # Build job
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Setup Node.js environment
+        uses: actions/setup-node@v2
+        with:
+          node-version: '14'
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Build React App
+        run: npm run build  # Replace with your build command (e.g., npm run build)
+
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./build  # Adjust to the directory where your build output is located
+          publish_branch: gh-pages
