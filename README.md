@@ -1,8 +1,10 @@
 # Welcome to React-Flashcards
 
 `react-flashcards` is a comprehensive, customizable flashcard component for React applications, designed to enhance learning experiences with rich multimedia support and interactive features.
-
-![React-Flashcards Demo](./assets/demo.gif)
+<video width="600" controls>
+  <source src="./assets/demo.mov" type="video/quicktime">
+  Your browser does not support the video tag.
+</video>
 
 ## Features
 
@@ -226,7 +228,7 @@ function App() {
 | timerDuration     | number                |                     | Duration for autoPlay Timer                                             |
 | bookmarkIcon      | React.ReactNode       | icon                | Custom bookmark icon                                                    |
 | textToSpeechIcon  | React.ReactNode       | icon                | Custom text-to-speech icon                                              |
-| label             | string \| JSX.Element | HTML or JSX for the labels of card | HTML or JSX for the labels of card                              |
+| label             | string \| JSX.Element | none | HTML or JSX for the labels of card                              |
 
 </details>
       <details>
@@ -257,7 +259,7 @@ function App() {
 | timerDuration     | number                | 10s                 | Duration for autoPlay Timer                                                 |
 | bookmarkIcon      | React.ReactNode       | icon                | Custom bookmark icon                                                        |
 | textToSpeechIcon  | React.ReactNode       | icon                | Custom text-to-speech icon                                                  |
-| label             | string \| JSX.Element | HTML or JSX for the labels of the card | HTML or JSX for the labels of the card                                      |
+| label             | string \| JSX.Element | none | HTML or JSX for the labels of the card                                      |
 
 ```javascript
 import { FlashCardArray } from 'react-flashcards';
