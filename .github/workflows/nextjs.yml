@@ -1,4 +1,3 @@
-# Updated workflow for building and deploying a React project to GitHub Pages with Node.js 20
 name: Deploy React App to GitHub Pages
 
 on:
@@ -12,12 +11,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v3  # Update to v3 or later
+        uses: actions/checkout@v3
 
       - name: Setup Node.js environment
         uses: actions/setup-node@v2
         with:
-          node-version: '20'  # Update to Node.js 20
+          node-version: '20'
 
       - name: Install dependencies
         run: npm install
@@ -29,5 +28,5 @@ jobs:
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./flashcard-demo
+          publish_dir: ./flashcard-demo  # Adjust to your correct build output directory
           publish_branch: gh-pages
