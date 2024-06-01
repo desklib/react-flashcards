@@ -35,5 +35,5 @@ jobs:
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./build  # Adjust to the directory where your build output is located
+          publish_dir: ./flashcard-demo  # Adjust to the directory where your build output is located
           publish_branch: gh-pages
