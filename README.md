@@ -2,7 +2,7 @@
 
 `react-flashcards` is a comprehensive, customizable flashcard component for React applications, designed to enhance learning experiences with rich multimedia support and interactive features.
 
-![React-Flashcards Demo](https://github.com/vdi1402/demo/assets/80397956/7bdcdb38-ae2d-498b-b25c-d37a160dd022.gif)
+![React-Flashcards Demo](./assets/demo.gif)
  
  Check out the [React-Flashcards Demo](https://react-flashcards.github.io/react-flashcards/).
 
